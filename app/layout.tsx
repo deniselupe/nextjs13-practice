@@ -1,6 +1,6 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
-import DashboardNavigation from './components/nav-dashboard';
+import DashboardNavigation from '../components/nav-dashboard';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -11,15 +11,21 @@ export const metadata = {
 
 interface RootLayoutProps {
   children: React.ReactNode;
+  team: React.ReactNode;
+  login: React.ReactNode;
 }
 
-export default function RootLayout({ children }: RootLayoutProps) {
+export default function RootLayout({ children, team, login }: RootLayoutProps) {
   return (
     <html className={inter.className} lang="en">
       <body className="bg-black text-slate-200 flex">
         <DashboardNavigation />
         <div className="ml-10 w-5/6">
           {children}
+          <div className="flex justify-between items-start">
+            {team}
+            {login}
+          </div>
         </div>
       </body>
     </html>
