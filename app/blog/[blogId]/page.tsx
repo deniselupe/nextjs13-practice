@@ -11,9 +11,7 @@ export async function generateStaticParams() {
     const response = await axios("https://jsonplaceholder.typicode.com/posts");
     const blogs: BlogsType = response.data;
 
-    return blogs.map((blog) => {
-        blogId: blog.id
-    });
+    return blogs.map((blog) => ({ blogId: blog.id.toString() }));
 }
 
 export default async function BlogDetailsPage({ params }: StaticParams) {
